@@ -1,0 +1,67 @@
+{{ define "views/calculosanteriores.html" }}
+    {{ template "layouts/header.html" }}
+    <body style="background-color: #2d2d30;" class="mb-5">
+    <form name="bikefit" method="post" action="/calculosanteriores" class='needs-validation'>
+        <div class="bg1">
+            <div class="container align-items-center">
+                <h3 class="text-center"> BUSCAR ANTERIORES</h3>
+                <p class="text-center">Digite seu e-mail e clique em buscar para pesquisar calculos feitos
+                    anteriormente.</p>
+
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col">
+                                <div class='input-group d-flex justify-content-center'>
+                                    <input type="email" name="email" class="form-control" style='max-width: 400px'
+                                           required
+                                           placeholder='digite aqui seu e-mail e clique em "buscar"'>
+                                    <button value='enviar' class="btn btn-success">buscar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </form>
+    {{ if .calculos }}
+        <div class="container align-items-center">
+            <ul class="list-group">
+                <li class="list-group-item ">
+                    <div class="row align-items-center">
+                        <table class='table-bordered'>
+                            <tr>
+                                <th class='p-1 text-center'>Data</th>
+                                <th class='p-1 text-center'>Cavalo</th>
+                                <th class='p-1 text-center'>Esterno</th>
+                                <th class='p-1 text-center'>Braco</th>
+                                <th class='p-1 text-center'>Tronco</th>
+                                <th class='p-1 text-center'>Quadro de Speed</th>
+                                <th class='p-1 text-center'>Quadro de MTB</th>
+                                <th class='p-1 text-center'>Altura do Selim</th>
+                                <th class='p-1 text-center'>Top Tube Efetivo</th>
+                            </tr>
+                            {{ range .calculos }}
+                                <tr>
+                                    <td class="text-center p-2">{{ .CreatedAt | formataData }}</td>
+                                    <td class="text-end p-2">{{ .Cavalo | formataFloat }}</td>
+                                    <td class="text-end p-2">{{ .Esterno | formataFloat }}</td>
+                                    <td class="text-end p-2">{{ .Braco | formataFloat }}</td>
+                                    <td class="text-end p-2">{{ .Tronco | formataFloat }}</td>
+                                    <td class="text-end p-2">{{ .QuadroSpeed | formataFloat }}</td>
+                                    <td class="text-end p-2">{{ .QuadroMTB | formataFloat }}</td>
+                                    <td class="text-end p-2">{{ .AlturaSelim | formataFloat }}</td>
+                                    <td class="text-end p-2">{{ .TopTubeEfetivo | formataFloat }}</td>
+                                </tr>
+                            {{ end }}
+
+                        </table>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    {{ end }}
+    </body>
+    {{ template "layouts/footer.html" }}
+{{end }}

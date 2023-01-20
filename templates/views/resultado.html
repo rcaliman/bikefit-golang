@@ -1,0 +1,118 @@
+{{ define "views/resultado.html" }}
+
+    {{ template "layouts/header.html" .}}
+    <body style="background-color: #2d2d30;" class="mb-5">
+    <div class="bg1">
+        <div class="container align-items-center">
+            <h3 class="text-center">RESULTADOS</h3>
+            <p class="text-center">Este bike fit foi concebido de acordo com o metodo LeMond, e seguindo as
+                especificacoes <a href=https://www.competitivecyclist.com/docs/competitivecyclist/fitcal/road-fit.pdf>deste
+                    documento</a>.</p>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <div style="text-align: center;">Cavalo:
+                                <texto_resultado>{{ .resultado.Cavalo | formataFloat}}</texto_resultado>
+                                cm
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div style="text-align: center;">Tronco ({{ .resultado.Esterno | formataFloat}}
+                                - {{ printf "%.1f" .resultado.Cavalo }}):
+                                <texto_resultado>{{ .resultado.Tronco | formataFloat }}</texto_resultado>
+                                cm
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div style="text-align: center;">Bra&ccedil;os:
+                                <texto_resultado>{{ .resultado.Braco | formataFloat }}</texto_resultado>
+                                cm
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <img class='img-fluid' src="/img/seattube.gif">
+                        </div>
+                        <div class="col">
+                            <texto_negrito>Tamanho do seu quadro:</texto_negrito>
+                            <br>
+                            <texto>Speed:</texto>
+                            <texto_resultado>{{ .resultado.QuadroSpeed | formataFloat }}</texto_resultado>
+                            <texto>MTB:</texto>
+                            <texto_resultado>{{ .resultado.QuadroMTB | formataFloat }}</texto_resultado>
+                        </div>
+                        <div class="col">
+                            <texto_medio>A maioria dos fabricantes definem o tamanho do quadro pela distancia entre a
+                                central e o topo do tubo do selim (seat tube). O numero apresentado aqui deve ser usado
+                                como referencia, podendo ter variacoes para menos ou para mais de acordo com o
+                                fabricante e/ou suas preferencias pois, em geral, um quadro menor te permite ter mais
+                                agilidade, enquanto um maior concede mais conforto.
+                            </texto_medio>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <img class='img-fluid' src="/img/seat.gif">
+                        </div>
+                        <div class="col">
+                            <texto_negrito>Altura do selim:</texto_negrito>
+                            <texto_resultado>{{ .resultado.AlturaSelim | formataFloat }}</texto_resultado>
+                        </div>
+                        <div class="col">
+                            <texto_medio>Mede-se da central ao topo do selim, conforme a marca laranja no desenho. A
+                                altura pode variar entre 1 e 2 cm, para menos ou para mais, de acordo com a preferencia
+                                do ciclista.
+                            </texto_medio>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <img class='img-fluid' src="/img/toptube.gif">
+                        </div>
+                        <div class="col">
+                            <texto_negrito>Top tube efetivo + mesa:</texto_negrito>
+                            <texto_resultado> {{ .resultado.TopTubeEfetivo | formataFloat }} </texto_resultado>
+                        </div>
+                        <div class="col">
+                            <texto_medio>Aqui temos a distancia do canote do selim ao guidao, ou seja, a soma do chamado
+                                top tube efetivo + a mesa. Tenha muita atencao com essa medida para evitar que o
+                                ciclista fique muito encolhido, ou muito esticado, em cima da bike, garantindo assim
+                                melhor performance e conforto, sem prejudicar sua saude fisica.
+                            </texto_medio>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div style="text-align: center;">
+                        <texto_medio>* O top tube efetivo merece tanta ou mais atencao na configuracao de uma bike
+                            quanto o seat tube. Nunca deixe de leva-lo em consideracao na hora da compra. A maioria dos
+                            fabricantes divulga a tabela de geometria de seus quadros.
+                        </texto_medio>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class='mt-3'>
+        <div class='container'>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <div class='input-group d-flex justify-content-center'>
+                        <a target=# class='form-control btn btn-success' style='max-width: 500px;'
+                           href='muraldemensagens'>quer comentar seus resultados no nosso mural?</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </body>
+    {{ template "layouts/footer.html" .}}
+{{ end }}

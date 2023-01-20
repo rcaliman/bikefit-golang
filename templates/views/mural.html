@@ -1,0 +1,58 @@
+{{ define "views/mural.html" }}
+    {{ template "layouts/header.html"}}
+    <body style="background-color: #2d2d30;" class="mb-5">
+    <form name="muraldemensagens" method="POST" action="muraldemensagens" class='needs-validation'>
+        <div class="bg1">
+            <div class="container align-items-center">
+                <h3 class="text-center">MURAL DE MENSAGENS</h3>
+                <p class="text-center">Deixem suas mensagens, duvidas e criticas construtivas. Por favor, tenham
+                    cortesia e
+                    educacao.</p>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class='row'>
+                            <div class='col'>
+                                <div class='input-group mt-3 d-flex justify-content-center'>
+                                    <input type='text' required placeholder='seu nome' name='nome' class='form-control'
+                                           style='max-width: 500px;'>
+                                </div>
+                                <div class='input-group mt-3 d-flex justify-content-center'>
+                                    <input type='email' required placeholder='seu e-mail' name='email'
+                                           class='form-control'
+                                           style='max-width: 500px;'>
+                                </div>
+                                <div class='input-group mt-3 d-flex justify-content-center'>
+                                <textarea name='mensagem' required rows=4 class='form-control'
+                                          placeholder='sua mensagem' style='max-width: 500px;'></textarea>
+                                </div>
+                                <div class='input-group mt-3 d-flex justify-content-center'>
+                                    <button class='form-control btn btn-success' style='max-width: 500px;'>clique aqui
+                                        para
+                                        postar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </form>
+    {{ if .mensagens }}
+    <div class="container align-items-center mt-4">
+        <ul class="list-group">
+            {{ range .mensagens }}
+                <li class="list-group-item text-center">
+
+                    <texto>{{ .Texto }}</texto>
+                    <p><texto_pequeno>{{ .CreatedAt | formataData }} - <a href={{ .Email }} style='color:#2d2d30';>{{ .Nome }}</a></texto_pequeno></p>
+                </li>
+
+            {{ end }}
+        </ul>
+        {{ end }}
+    </div>
+
+    </body>
+    {{ template "layouts/footer.html" }}
+{{ end }}
