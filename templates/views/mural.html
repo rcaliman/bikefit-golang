@@ -45,7 +45,7 @@
                 <li class="list-group-item text-center">
 
                     <texto>{{ .Texto }}</texto>
-                    <p><texto_pequeno>{{ .CreatedAt | formataData }} - <a href={{ .Email }} style='color:#2d2d30';>{{ .Nome }}</a></texto_pequeno></p>
+                    <p><texto_pequeno>{{ .CreatedAt | formataData }} - <a href=email:{{ .Email }} style='color:#2d2d30';>{{ .Nome }}</a></texto_pequeno></p>
                 </li>
 
             {{ end }}
