@@ -36,3 +36,10 @@ func PostaMural(c *gin.Context) {
 		"mensagens": mensagens,
 	})
 }
+
+func ApagaMensagem(c *gin.Context) {
+	id := c.Params.ByName("id")
+	var mensagem models.Mensagem
+	databases.DB.Delete(&mensagem, id)
+	c.IndentedJSON(http.StatusOK, &mensagem)
+}

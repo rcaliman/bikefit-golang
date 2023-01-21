@@ -26,5 +26,6 @@ func IniciaRoteamento() {
 	r.POST("/muraldemensagens", controllers.PostaMural)
 	r.GET("/links", controllers.Links)
 	r.GET("/sobre", controllers.Sobre)
+	r.DELETE("/muraldemensagens/:id", controllers.ApagaMensagem)
 	r.Run(":5000")
 }
