@@ -19,7 +19,7 @@
                         </div>
                         <div class="col">
                             <div style="text-align: center;">Tronco ({{ .resultado.Esterno | formataFloat}}
-                                - {{ printf "%.1f" .resultado.Cavalo }}):
+                                - {{ .resultado.Cavalo | formataFloat }}):
                                 <texto_resultado>{{ .resultado.Tronco | formataFloat }}</texto_resultado>
                                 cm
                             </div>
