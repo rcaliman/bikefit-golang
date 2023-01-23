@@ -39,7 +39,9 @@ func Resultados(c *gin.Context) {
 func CalculosAnteriores(c *gin.Context) {
 	email := c.PostForm("email")
 	var calculos []models.Medidas
-	databases.DB.Where("email = ?", email).Find(&calculos)
+	if email != "" {
+		databases.DB.Where("email = ?", email).Find(&calculos)
+	}
 	c.HTML(http.StatusOK, "views/calculosanteriores.html", gin.H{
 		"calculos": calculos,
 	})

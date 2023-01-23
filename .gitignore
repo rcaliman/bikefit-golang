@@ -1,2 +1,4 @@
 .idea
 dbpass.go
+.gitignore
+favicon.ico
